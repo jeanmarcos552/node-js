@@ -8,16 +8,19 @@
     "lint": "eslint src --ext .ts",
     "knex": "node --loader tsx ./node_modules/.bin/knex"
   },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fastify": "^4.16.3",
+    "knex": "^2.4.2",
+    "sqlite3": "^5.1.6",
+    "zod": "^3.21.4"
+  },
   "devDependencies": {
+    "@types/node": "^18.16.3",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
     "eslint": "^8.39.0",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4"
-  },
-  "dependencies": {
-    "fastify": "^4.16.3",
-    "knex": "^2.4.2",
-    "sqlite3": "^5.1.6"
   }
 }
