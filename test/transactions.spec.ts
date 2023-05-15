@@ -1,19 +1,21 @@
 import { test, beforeAll, afterAll } from 'vitest';
 import request from 'supertest';
-import app from '../config/server';
+import { app } from '../src/app';
 
 beforeAll(async () => {
-  app.ready();
+  await app.ready();
 });
 
 afterAll(async () => {
-  app.close();
+  await app.close();
 });
 
 test('Testar credit', async () => {
   await request(app.server)
     .post('/transactions')
-
+    .set('Cookie', [
+      'sessionId=88635993-7830-4eee-9b56-449ced1457fd; Max-Age=604800000; Path=/; Domain=localhost',
+    ])
     .send({
       nome: 'Teste',
       amount: 5000,

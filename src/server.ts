@@ -1,5 +1,5 @@
 import { env } from './env';
-import app from './config/server';
+import { app } from './app';
 
 app
   .listen({
