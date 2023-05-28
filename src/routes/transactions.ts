@@ -15,7 +15,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
   /* 
     Create
   */
-  app.post('/', preHandler, async (req, res) => {
+  app.post('/', async (req, res) => {
     const { body } = req;
 
     const schemaValidation = z.object({
