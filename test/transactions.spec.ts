@@ -22,25 +22,27 @@ describe('Teste Routes transactions', () => {
       .expect(201);
   });
 
-  it('List all transactions', async () => {
-    const cookiesLoged = await request(app.server)
+  it('shold be able all transactions', async () => {
+    const create = await request(app.server)
       .post('/transactions')
       .send({
-        nome: 'Teste',
-        amount: 5000,
+        nome: 'Teste transaction',
+        amount: 1000,
         type: 'credit',
       })
       .expect(201);
 
-    const listAllTransaction = await request(app.server)
+    const cookieAuthenticate = create.get('Set-Cookie');
+
+    const respList = await request(app.server)
       .get('/transactions')
-      .set('Cookie', cookiesLoged.get('set-cookie'))
+      .set('Cookie', cookieAuthenticate)
       .expect(200);
 
-    expect(listAllTransaction.body.allTransactions.data).toEqual([
+    expect(respList.body.allTransactions.data).toEqual([
       expect.objectContaining({
-        nome: 'Teste',
-        amount: 5000,
+        nome: 'Teste transaction',
+        amount: 1000,
       }),
     ]);
   });
