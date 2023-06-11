@@ -4,7 +4,7 @@ import { z } from 'zod';
 const schema = z.object({
   DATABASE_URL: z.string(),
   PORT: z.coerce.number().default(3333),
-  DATABASE_CLIENTE: z.enum(['sqlite', 'pg']),
+  DATABASE_CLIENT: z.enum(['sqlite', 'pg']),
 });
 
 const _env = schema.safeParse(process.env);
