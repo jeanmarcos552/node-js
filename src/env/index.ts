@@ -10,7 +10,7 @@ const schema = z.object({
 const _env = schema.safeParse(process.env);
 
 if (_env.success !== true) {
-  console.error('Invalid environment variables!', _env.error.format());
+  console.error('Invalid environment variables', _env.error.format());
 
   throw new Error('Invalid environment variables');
 }
